@@ -24,7 +24,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/reset.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -44,7 +44,7 @@
 <main class="container py-5">
     <section>
         <form class="form-row justify-content-center" action="create.php" method="POST">
-            <div class="col-10 col-md-6 py-2">
+            <div class="col-10 col-md-6 py-2 add-todo">
 
                 <input id ="input-task" type="text" class="form-control" placeholder="ADD TODO" name="task">
             </div>
@@ -68,9 +68,9 @@
       <tbody>
         <!--ここ以下後ほど繰り返し処理する-->
         <?php foreach ($tasks as $task):?>
-        <tr>
+        <tr id='task-<?php echo h($task['id']);?>'>
             <td><?php echo h($task['name']); ?></td>
-            <td><?php 
+            <td><?php
                 // echo $task['due_date'];
                 echo h(date('Y年m月d日', strtotime($task['due_date']))); 
                 ?></td>
@@ -81,8 +81,7 @@
                 <!-- i classはfont awesome から無料でひっぱてきたやつ</i>より後ろのは画面に表示されている文字なのでアイコンをタップして欲しい場合には記入しない。edit-iconは自分で追加している。style.cssにてアイコンの色を指定している -->
             </td>
             <td>
-                <a class="text-muted" href="delete.php?id=<?php echo h($task['id']); ?>">
-                <i class="fas fa-frown delete-icon"></i>DELETE</a>
+                <a data-id="<?php echo h($task['id']); ?>" class="text-muted delete-button" href="delete.php?id=<?php echo h($task['id']); ?>"><i class="fas fa-frown delete-icon"></i>DELETE</a>
             </td>
         </tr>
         <?php endforeach; ?>
