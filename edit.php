@@ -24,12 +24,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <header class="px-5 bg-primary">
+    <header class="px-5 bg-success">
         <nav class="navbar navbar-dark">
             <a href="index.php" class="navbar-brand">TODO APP</a>
             <div class="justify-content-end">
                 <span class="text-light">
-                    SeedKun
+                Vaccum
                 </span>
             </div>
         </nav>
@@ -42,7 +42,7 @@
                     <input type="hidden" value="<?php echo h($task['id']);?>"name="id">
                 </div>
                 <div class="py-2 col-md-3 col-12">
-                    <button type="submit" class="col-12 btn btn-primary btn-block">UPDATE</button>
+                    <button type="submit" class="col-12 btn btn-success btn-block">UPDATE</button>
                 </div>
             </form>
         </section>

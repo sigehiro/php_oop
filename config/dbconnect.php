@@ -4,7 +4,7 @@ class DbManager
     public $dbh;
     public function connect()
     {
-//DBに接続
+//DBに接続 phpmyadminの作成
 $host = 'localhost';
 $dbname = 'Todo';
 $charset = 'utf8mb4';
