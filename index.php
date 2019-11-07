@@ -63,6 +63,8 @@
             <th>STASTUS</th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
         </tr>
       </thead>
       <tbody>
@@ -74,7 +76,11 @@
                 // echo $task['due_date'];
                 echo h(date('Y年m月d日', strtotime($task['due_date']))); 
                 ?></td>
-            <td>NOT YET</td>
+                <?php if($task['done_flg'] ==0):?>
+                   <td>NOT YET</td>
+                <?php else: ?>
+                   <td> DONE</td>
+                <?php endif; ?>
             <td>
                 <a class="text-muted" href="edit.php?id=<?php echo h($task['id']); ?>">
                 <i class="fas fa-child edit-icon"></i>EDIT</a>
@@ -82,6 +88,11 @@
             </td>
             <td>
                 <a data-id="<?php echo h($task['id']); ?>" class="text-muted delete-button" href="delete.php?id=<?php echo h($task['id']); ?>"><i class="fas fa-frown delete-icon"></i>DELETE</a>
+            </td>
+            <td>
+                <?php if($task['done_flg'] ==0):?>
+                   <button class="btn btn-info done-button">完了</button>
+                <?php endif; ?>
             </td>
         </tr>
         <?php endforeach; ?>

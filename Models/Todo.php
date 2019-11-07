@@ -55,5 +55,13 @@ class Todo
         $stmt = $this->db_manager->dbh->prepare('DELETE FROM ' . $this->table .' WHERE id = ?');
         $stmt->execute([$id]);
     }
-    
+
+    //タスクを完了させる他mのメソッド
+    public function dba_open($id)
+    {
+        //SQLの準備
+        $stmt = $this->db_manager->dbh->prepare('UPDATE '.$this->table.' SET done_flg = 1 WHERE id = ?');
+        //実行
+        $stmt->execute([$id]);
+    }
 }

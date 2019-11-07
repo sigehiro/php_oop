@@ -85,4 +85,9 @@ $(function(){
 
 
     });
-  })
+
+    //完了ボタンがクリックされた時$
+    $(document).on('click','.done-button',function(){
+      alert('aa');
+    });
+  });
