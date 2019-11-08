@@ -57,7 +57,7 @@ class Todo
     }
 
     //タスクを完了させる他mのメソッド
-    public function dba_open($id)
+    public function done($id)
     {
         //SQLの準備
         $stmt = $this->db_manager->dbh->prepare('UPDATE '.$this->table.' SET done_flg = 1 WHERE id = ?');

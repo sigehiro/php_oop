@@ -43,6 +43,9 @@ $(function(){
                     <a data-id="${data['id']}" class="text-muted delete-button" href="delete.php?id=${data['id']}">
                     <i class="fas fa-frown delete-icon"></i>DELETE</a>
                 </td>`+
+                `<td>` +
+                      `<button data-id="${data['id']}" class="btn btn-info done-button" >完了</button>` +
+                      `</td>` +
               `</tr>`
             );
             $('#input-task').val('');
@@ -88,6 +91,35 @@ $(function(){
 
     //完了ボタンがクリックされた時$
     $(document).on('click','.done-button',function(){
-      alert('aa');
-    });
-  });
+
+      //IDを取得
+      let selectedId = $(this).data('id');
+      //アラートIDを表示する
+      // alert(selectedId);
+
+      //ajax通信
+      //
+      $.ajax({
+        url:'done.php',
+        type:'GET',
+        dataType:'json',
+        data:{
+          id:selectedId
+        },
+        }).done((data) =>{
+            //完了したタスクの完了ボタンを消す
+            //fadeOut,remove
+            //今イベントが実行されている本体を消す
+            //完了したタスクのstatusをdoneに変更
+            //-text
+            //ヒント<td>Not Yet</td>にIDをつける
+
+          $(this).fadeOut();
+          $('#task-status-' + data).text('Done');
+        }).fail((error) =>{
+
+
+
+        })
+        });
+       });

@@ -74,10 +74,10 @@
             <td><?php echo h($task['name']); ?></td>
             <td><?php
                 // echo $task['due_date'];
-                echo h(date('Y年m月d日', strtotime($task['due_date']))); 
+                echo h(date('Y年m月d日', strtotime($task['due_date'])));
                 ?></td>
                 <?php if($task['done_flg'] ==0):?>
-                   <td>NOT YET</td>
+                   <td id="task-status-<?php echo h($task['id']); ?>">NOT YET</td>
                 <?php else: ?>
                    <td> DONE</td>
                 <?php endif; ?>
@@ -91,7 +91,7 @@
             </td>
             <td>
                 <?php if($task['done_flg'] ==0):?>
-                   <button class="btn btn-info done-button">完了</button>
+                   <button data-id="<?php echo h($task['id']); ?>" class="btn btn-info done-button">完了</button>
                 <?php endif; ?>
             </td>
         </tr>
